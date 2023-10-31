@@ -100,6 +100,18 @@ const en = {
       Error: "Oops, something went wrong. Please try again later.",
     },
   },
+  Deploy: {
+    Config: {
+      Title: "Deploy Bot To Telegram",
+      Start: "Start Bot",
+      Stop: "Stop Bot",
+      Token: {
+        Title: "Telegram Bot token",
+        Hint: "Enter your Telegram Bot token, get it from",
+        Placeholder: "Telegram Bot token",
+      },
+    },
+  },
   Bot: {
     Name: "Bot",
     Page: {
@@ -110,6 +122,7 @@ const en = {
       Edit: "Edit",
       Delete: "Delete",
       DeleteConfirm: "Confirm to delete?",
+      Deploy: "Telegram",
       Share: "Share",
     },
     EditModal: {

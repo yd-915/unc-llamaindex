@@ -4,6 +4,7 @@ import {
   MoreHorizontal,
   Share2,
   XCircle,
+  Zap,
 } from "lucide-react";
 import { useState } from "react";
 import Locale from "../../../locales";
@@ -21,6 +22,7 @@ import {
 import { useBot } from "../use-bot";
 import DeleteBotDialogContent from "./delete-bot-dialog";
 import EditBotDialogContent from "./edit-bot-dialog";
+import DeployBotDialogContent from "./deploy-bot-dialog";
 import ShareBotDialogContent from "./share-bot-dialog";
 
 export default function BotOptions() {
@@ -62,6 +64,15 @@ export default function BotOptions() {
                 <span>{Locale.Bot.Item.Delete}</span>
               </DropdownMenuItem>
             </AlertDialogTrigger>
+            <DialogTrigger asChild>
+              <DropdownMenuItem
+                disabled={isReadOnly && !isShareble}
+                onClick={() => setDialogContent(<DeployBotDialogContent />)}
+              >
+                <Zap className="mr-2 w-4 h-4" />
+                <span>{Locale.Bot.Item.Deploy}</span>
+              </DropdownMenuItem>
+            </DialogTrigger>
             <DialogTrigger asChild>
               <DropdownMenuItem
                 disabled={isReadOnly}

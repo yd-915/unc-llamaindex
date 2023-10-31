@@ -105,7 +105,7 @@ export async function callSession(
     onUpdateMessages: (messages: ChatMessage[]) => void;
   },
   uploadedFile?: FileWrap,
-): Promise<void> {
+): Promise<ChatMessage | undefined> {
   const modelConfig = bot.modelConfig;
 
   let userMessage: ChatMessage;
@@ -128,7 +128,7 @@ export async function callSession(
     // updating the session will trigger a re-render, so it will display the messages
     session.messages = session.messages.concat([userMessage, botMessage]);
     callbacks.onUpdateMessages(session.messages);
-    return;
+    return botMessage;
   }
 
   const botMessage: ChatMessage = createMessage({
@@ -171,6 +171,7 @@ export async function callSession(
   }
 
   // make request
+  let result;
   const controller = new AbortController();
   ChatControllerPool.addController(bot.id, controller);
   const api = new LLMApi();
@@ -196,6 +197,8 @@ export async function callSession(
       }
       callbacks.onUpdateMessages(session.messages.concat());
       ChatControllerPool.remove(bot.id);
+      // TODO: check send memory message to telegram
+      result = botMessage;
     },
     onError(error) {
       const isAborted = error.message.includes("aborted");
@@ -212,6 +215,8 @@ export async function callSession(
       ChatControllerPool.remove(bot.id);
 
       console.error("[Chat] failed ", error);
+      result = botMessage;
     },
   });
+  return result;
 }
