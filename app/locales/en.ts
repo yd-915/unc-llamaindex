@@ -36,7 +36,7 @@ const en = {
     Send: "Send Memory",
   },
   Home: {
-    Github: "Github",
+    LinkedIn: "Contact",
     Logout: "Logout",
     Settings: "Settings",
   },
@@ -145,8 +145,8 @@ const en = {
   },
 
   Welcome: {
-    Title: "LlamaIndex Chat",
-    SubTitle: "Create chat bots that know your data",
+    Title: "Unc",
+    SubTitle: "The open and secure ChatGPT platform",
     Quote:
       "“This tool has saved me countless hours of work and helped me apply AI features to my work faster than ever before.”",
     LoginLinkedinTitle: "Login with LinkedIn",
