@@ -14,12 +14,12 @@ const DEMO_BOTS: Omit<Bot, "id" | "session">[] = [
     botHello: "Hello! How can I assist you today?",
     context: [],
     modelConfig: {
-      model: "gpt-3.5-turbo-16k",
-      temperature: 0.5,
+      model: "gpt-4",
+      temperature: 0.3,
       maxTokens: 8000,
       sendMemory: true,
     },
-    readOnly: true,
+    readOnly: false,
     hideContext: false,
   },
   {
@@ -38,7 +38,7 @@ const DEMO_BOTS: Omit<Bot, "id" | "session">[] = [
       maxTokens: 8000,
       sendMemory: true,
     },
-    readOnly: true,
+    readOnly: false,
     datasource: "redhat",
     hideContext: false,
   },
@@ -58,7 +58,7 @@ const DEMO_BOTS: Omit<Bot, "id" | "session">[] = [
       maxTokens: 8000,
       sendMemory: true,
     },
-    readOnly: true,
+    readOnly: false,
     datasource: "watchos",
     hideContext: false,
   },
@@ -78,9 +78,30 @@ const DEMO_BOTS: Omit<Bot, "id" | "session">[] = [
       maxTokens: 8000,
       sendMemory: true,
     },
-    readOnly: true,
+    readOnly: false,
     datasource: "basic_law_germany",
     hideContext: false,
+  },
+  {
+    avatar: "1f5a5-fe0f",
+    name: "IT Expert",
+    botHello: "Hello! How can I assist you today?",
+    context: [
+      {
+        role: "system",
+        content:
+          "I want you to act as an IT Expert. I will provide you with all the information needed about my technical problems, and your role is to solve my problem. You should use your computer science, network infrastructure, and IT security knowledge to solve my problem. Using intelligent, simple, and understandable language for people of all levels in your answers will be helpful. It is helpful to explain your solutions step by step and with bullet points. Try to avoid too many technical details, but use them when necessary. I want you to reply with the solution, not write any explanations.",
+        date: "",
+      },
+    ],
+    modelConfig: {
+      model: "gpt-4",
+      temperature: 1,
+      maxTokens: 8000,
+      sendMemory: true,
+    },
+    readOnly: false,
+    hideContext: true,
   },
 ];
 
